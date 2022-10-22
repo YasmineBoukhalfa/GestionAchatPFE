@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Gestion Achat</title>
+            </f:facet>
+        </h:head>
+
+        <style type="text/css">
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: geneva, arial, helvetica, sans-serif;
+                font-size:90%;
+            }
+        </style>
+
+        <h:body>
+
+            <ui:composition template="/template/commonLayout.xhtml">
+                <ui:define name="content-title">
+                    <h1 class="titre">Fiches relèves validées</h1>
+                </ui:define>
+
+                <ui:define name="content">
+
+                    <h:form id="form">
+
+                        <f:view>
+                            <p:dataTable var="tbl" value="#{validationReleveController.listReleveValidee}" rows="7" paginator="true">                        
+                                <p:column headerText="Référence PDL">
+                                    <h:outputText value="#{tbl.comptageAeid.pdlAeid.reference}" />
+                                </p:column>
+
+                                <p:column headerText="Intitulé Comptage">
+                                    <h:outputText value="#{tbl.comptageAeid.intituleComptage}" />
+                                </p:column>
+
+                                <p:column headerText="Mode Relève">
+                                    <h:outputText value="#{tbl.modeDeterminationid.libelle}" />
+                                </p:column>
+
+                                <p:column headerText="Quantité">
+                                    <h:outputText value="#{tbl.quantite}" />
+                                </p:column>
+
+                                <p:column headerText="Date de relève">
+                                    <h:outputText value="#{tbl.dateHeureReleve}" />
+                                </p:column>
+
+                                <p:column headerText="Date de validation">
+                                    <h:outputText value="#{tbl.dateValidation}" />
+                                </p:column>
+
+                                
+
+                            </p:dataTable>
+                        </f:view>
+
+                    </h:form>
+                </ui:define>
+            </ui:composition>
+
+
+
+        </h:body>
+    </f:view>
+
+</html>
+
+

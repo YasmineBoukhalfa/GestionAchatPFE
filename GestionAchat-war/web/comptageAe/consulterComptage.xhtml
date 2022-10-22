@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+
+        <ui:composition template="/template/commonLayout.xhtml">
+            <ui:define name="content-title">
+                <h1 class="titre">Détails comptage</h1>
+            </ui:define>
+
+            <ui:define name="content">
+
+                <h:form id="Fform">
+
+                    <div class="form-group row">
+                        <h:outputText value="Intitulé comptage:" class="col-sm-2"/>
+                        <h:outputText id="intituleComptage" class="col-sm-8" value="#{consulterComptageAeController.comptageAe.intituleComptage}" />
+                    </div>
+
+                    <div class="form-group row">
+                        <h:outputText value="Numero serie:" class="col-sm-2"/>
+                        <h:outputText id="numSerie" class="col-sm-8" value="#{consulterComptageAeController.comptageAe.numSerie}" />
+                    </div>
+
+                    <div class="form-group row">
+                        <h:outputText value="PdlAe:" class="col-sm-2"/>
+                        <h:outputText id="pdlAeid" class="col-sm-8" value="#{consulterComptageAeController.pdlAe.intitule}" />
+                    </div>
+
+                    <div class="form-group row">
+                        <h:outputText value="Date installation" class="col-sm-2" />
+                        <h:outputText id="dateInstallation" class="col-sm-8" value="#{consulterComptageAeController.comptageAe.dateInstallation}" />
+                    </div>
+
+                    <div class="form-group row">
+                        <h:outputText value="Date service" class="col-sm-2"/>
+                        <h:outputText id="dateService" class="col-sm-8" value="#{consulterComptageAeController.comptageAe.dateService}" />
+                    </div>
+
+                    <div class="form-group row">
+                        <h:outputText value="Date pose" class="col-sm-2"/>
+                        <h:outputText id="datePose" class="col-sm-8" value="#{consulterComptageAeController.comptageAe.datePose}" />
+                    </div>
+
+
+                    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <div class="form-group row">
+                        <h:outputText value="Nombre digits:" class="col-sm-2"/>
+                        <h:outputText id="nbDigits" class="col-sm-8" value="#{consulterComptageAeController.comptageAe.nbDigits}" />
+                    </div>    
+
+                    <div class="form-group row">
+                        <h:outputText value="Index pose:" class="col-sm-2"/>
+                        <h:outputText id="indexPose" class="col-sm-8" value="#{consulterComptageAeController.comptageAe.indexPose}" />
+                    </div>
+
+                    <div class="form-group row">
+                        <h:outputText value="Index dépose:" class="col-sm-2"/>
+                        <h:outputText id="indexDepose" class="col-sm-8" value="#{consulterComptageAeController.comptageAe.indexDepose}" />
+                    </div>
+
+                    
+
+                    
+
+
+
+                    <div class="form-group row">
+                        <h:outputText value="Marque:" class="col-sm-2"/>
+                        <h:outputText id="marqueid" class="col-sm-8" value="#{consulterComptageAeController.marque.libelle}" />
+                    </div>
+                    <div class="form-group row">
+                        <h:outputText value="Nature:" class="col-sm-2"/>
+                        <h:outputText id="natureid" class="col-sm-8" value="#{consulterComptageAeController.nature.libelle}" />
+                    </div>
+                    <div class="form-group row">
+                        <h:outputText value="Mode phase: " class="col-sm-2"/>
+                        <h:outputText id="modePhase" class="col-sm-8" value="#{consulterComptageAeController.modePhaseString}" />
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <div class="form-group row">
+                        <h:outputText value="Coefficient lecture:" class="col-sm-2"/>
+                        <h:outputText id="coefLecture" class="col-sm-8" value="#{consulterComptageAeController.comptageAe.coeffLecture}" />
+                    </div>
+
+
+
+                    <div class="form-group row">
+                        <h:outputText value="Etat comptage" class="col-sm-2"/>
+                        <h:outputText id="etatComptage" class="col-sm-8" value="#{consulterComptageAeController.comptageAe.etatComptage}" />
+                    </div>
+                    <div class="form-group row">
+                        <h:outputText value="Remise a zero:" class="col-sm-2" />
+                        <h:outputText id="remiseZero" class="col-sm-8" value="#{consulterComptageAeController.comptageAe.remiseZero}" />
+                    </div>
+
+                    <div class="form-group row">
+                        <h:outputText value="Année fabrication" class="col-sm-2"/>
+                        <h:outputText id="anneeFabrication" class="col-sm-8" value="#{consulterComptageAeController.comptageAe.anneeFabrication}" />
+                    </div>
+
+
+
+
+
+
+                    <div class="mx-auto espace" style="width: 100%;">
+                        <p:commandLink value="Retour" action="/comptageAe/listComptage" process="@this" class="btn btn-secondary col-sm-2" style="font-weight: bold;"></p:commandLink>
+                    </div>
+
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</ui:composition>
+

@@ -1,0 +1,85 @@
+body{
+  background:url(architecture.jpg) no-repeat center top #310b28;
+  background-image: cover;
+  background-position: center;
+  font-size: 100%;
+  background-size: 100%;
+}
+
+a.navbar-brand.h1.logo{
+  background: url(sonelgaz.png) no-repeat center top ;
+}
+
+
+
+.jumbotrom-custom{
+  color:white;
+  text-align: center;
+  background-color:transparent;
+  opacity: 0.8;
+  font-size: 130%;
+  padding-left: 8%;
+}
+
+.card-custom{
+  background-color: transparent;
+  border:solide 2px;
+  text-align:center;
+}
+
+.card-body-custom{
+  background-color: transparent;
+}
+
+.jumbotron-custom{
+  margin-top:5%;
+  padding-left: 5%;
+}
+
+.boutons-custom{
+  text-align: center;
+  margin-top:3%;
+}
+.btn-padding-custom{
+  margin:1%;
+  padding:1.5%;
+}
+
+.jumbotron-h-custom{
+  text-align: center;
+  padding-bottom: 3%;
+}
+
+
+a.nav-item.nav-link.navbar-selected-custom:hover{
+  color:black;
+  border:solid 2px;
+  border-color:orange;
+  background-color:orange;
+  opacity:0.6;
+}
+
+.fas.fa-plus , .fas.fa-user{
+  margin-right:2%;
+  float:right;
+}
+
+.nav-titre-padding{
+  margin-left:  2%;
+  margin-right:2%;
+}
+a.nav-item.nav-link.navbar-selected-custom{
+}
+.nav-item.nav-link.navbar-selected-custom.navbar-children{
+  margin-left:20%;
+  display:none;
+}
+
+.table.table-custom{
+  text-align: center;
+}
+
+.a-images{
+  padding-left: 4%;
+  padding-right: 4%;
+}

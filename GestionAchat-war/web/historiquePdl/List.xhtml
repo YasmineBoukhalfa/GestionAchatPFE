@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListHistoriquePdlTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListHistoriquePdlEmpty}" rendered="#{historiquePdlController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{historiquePdlController.items.rowCount > 0}">
+                    <h:outputText value="#{historiquePdlController.pagination.pageFirstItem + 1}..#{historiquePdlController.pagination.pageLastItem + 1}/#{historiquePdlController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{historiquePdlController.previous}" value="#{bundle.Previous} #{historiquePdlController.pagination.pageSize}" rendered="#{historiquePdlController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{historiquePdlController.next}" value="#{bundle.Next} #{historiquePdlController.pagination.pageSize}" rendered="#{historiquePdlController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{historiquePdlController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHistoriquePdlTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHistoriquePdlTitle_puissance}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.puissance}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHistoriquePdlTitle_intitule}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.intitule}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHistoriquePdlTitle_reference}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.reference}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHistoriquePdlTitle_datePv}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.datePv}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHistoriquePdlTitle_adrPdl}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.adrPdl}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHistoriquePdlTitle_nombreTransformation}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombreTransformation}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHistoriquePdlTitle_pdlAeid}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pdlAeid}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHistoriquePdlTitle_partieReceptriceid}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.partieReceptriceid}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHistoriquePdlTitle_partieEmmetriceid}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.partieEmmetriceid}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHistoriquePdlTitle_tensionDepartid}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tensionDepartid}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHistoriquePdlTitle_tensionArriveeid}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tensionArriveeid}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHistoriquePdlTitle_typeAeid}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.typeAeid}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHistoriquePdlTitle_adressePdlid}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.adressePdlid}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHistoriquePdlTitle_coordonneeGeoid}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.coordonneeGeoid}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{historiquePdlController.prepareView}" value="#{bundle.ListHistoriquePdlViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{historiquePdlController.prepareEdit}" value="#{bundle.ListHistoriquePdlEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{historiquePdlController.destroy}" value="#{bundle.ListHistoriquePdlDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{historiquePdlController.prepareCreate}" value="#{bundle.ListHistoriquePdlCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListHistoriquePdlIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

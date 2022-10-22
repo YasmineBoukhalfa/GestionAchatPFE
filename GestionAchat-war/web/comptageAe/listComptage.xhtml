@@ -1,0 +1,150 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/template/commonLayout.xhtml">
+
+            <ui:define name="content-title">
+                <h1>Liste des comptages</h1>
+            </ui:define>
+
+            <ui:define name="content">
+                
+                <p:commandLink action="/comptageAe/ajouterComptage" value="Ajouter comptage" class="btn btn-primary col-lg-2 col-md-3 col-sm-2" style="margin-bottom:1%;"></p:commandLink>
+                            
+
+                <h:form id="ComptageAeListForm">
+                    
+                        <p:dataTable id="datalist" value="#{listComptageAeController.listComptageAe}" var="item"
+                                     selectionMode="single" 
+                                     paginator="true"
+                                     rowKey="#{item.id}"
+                                     rows="10"
+                                     rowsPerPageTemplate="10,20,30,40,50"
+                                     tableStyleClass="table table-striped table-dark"
+                                     >
+                            
+                            <p:column>
+                                <f:facet name="header" class="list-header" >
+                                    <h:outputText value="Intitulé comptage"/>
+                                </f:facet>
+                                <h:outputText value="#{item.intituleComptage}"/>
+                            </p:column>
+                            
+                            
+                            <p:column>
+                                <f:facet name="header" class="list-header">
+                                    <h:outputText value="Numero serie"/>
+                                </f:facet>
+                                <h:outputText value="#{item.numSerie}"/>
+                            </p:column>
+                            
+                            
+                            <p:column>
+                                <f:facet name="header" class="list-header">
+                                    <h:outputText value="Date service"/>
+                                </f:facet>
+                                <h:outputText value="#{item.dateService}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                            </p:column>
+                            
+                            <p:column>
+                                <f:facet name="header" class="list-header">
+                                    <h:outputText value="PdlAe"/>
+                                </f:facet>
+                                <h:outputText value="#{item.pdlAeid.intitule}"/>
+                            </p:column>
+                            
+                            
+                            
+
+                            
+                            
+                            <p:column>
+                                <f:facet name="header" class="list-header">
+                                    <h:outputText value="Marque"/>
+                                </f:facet>
+                                <h:outputText value="#{item.marqueid.libelle}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header" class="list-header">
+                                    <h:outputText value="Nature"/>
+                                </f:facet>
+                                <h:outputText value="#{item.natureid.libelle}"/>
+                            </p:column>
+                            
+
+                            
+                            
+                            <p:column >
+                                <f:facet name="header" class="list-header">
+                                    <h:outputText value="Fonctions" />
+                                </f:facet>
+                                
+                                <p:commandLink title="consulter" class="btn btn-primary bouton-liste" action="/comptageAe/consulterComptage" >
+                                    <i class="fas fa-search icon-blanc"></i>
+                                    <f:param name="selectedComptageAeid" value="#{item.id}" />
+                                </p:commandLink>
+                                
+                                <p:commandLink title="modifier" class="btn btn-warning bouton-liste"  action="/comptageAe/modifierComptage" ajax="false">
+                                    <i class="fas fa-edit "></i>
+                                    <f:param name="selectedComptageAeid" value="#{item.id}" />
+                                </p:commandLink>
+
+                                <p:commandLink title="supprimer" class="btn btn-danger bouton-liste" action="#{listComptageAeController.delete(item)}" update="@form" ajax="true" >
+                                    <i class="fas fa-trash-alt icon-blanc"></i>
+                                </p:commandLink>
+
+                                
+                            </p:column>
+
+                        </p:dataTable>
+                    
+                </h:form>
+
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</ui:composition>

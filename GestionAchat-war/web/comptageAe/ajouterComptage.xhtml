@@ -1,0 +1,262 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1101010/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+
+
+        <ui:composition template="/template/commonLayout.xhtml">
+            <ui:define name="content-title">
+                <h1 class="titre">Ajouter comptage</h1>
+            </ui:define>
+
+            <ui:define name="content">
+
+                <h:form id="Fform">
+                    
+                    
+                    <div class="form-group row">
+                        <h:outputText value="Intitulé comptage" class="col-sm-2"/>
+                        <p:inputText id="intituleComptage" class="col-sm-10" value="#{comptageAeController.intituleComptage}" required="true" requiredMessage="veuillez indiquer une valeur pour intitule"></p:inputText>
+                        <h:message for="intituleComptage" class="message"/>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <h:outputText value="Numero serie" class="col-sm-2" />
+                        <p:inputMask mask="99999" id="numSerie" class="col-sm-10" value="#{comptageAeController.numSerie}" required="true" requiredMessage="veuillez saisir le numero de serie"></p:inputMask>
+                        <h:message for="numSerie" class="message"/>
+                    </div>
+                    <div class="form-group row">
+                        <h:outputText value="PdlAe" class="col-sm-2"/>
+
+                        <p:selectOneMenu id="pdlAeid" class="col-sm-10" value="#{comptageAeController.pdlAeid}" required="true" requiredMessage="veuillez choisir un Pdl">
+                            <f:selectItem itemLabel="Selectionner" itemValue="#{null}"/>
+                            <f:selectItems value="#{comptageAeController.listPdlAe}" var="pdlAe" itemValue="#{pdlAe.id}" itemLabel="#{pdlAe.intitule}"/>
+                            <f:ajax execute="@this"/>
+                        </p:selectOneMenu>
+                        <h:message for="pdlAeid" class="message"/>
+                    </div>
+                    
+                    
+                    <div class="form-group row">
+                        <h:outputLabel value="Date installation" for="dateInstallation" class="col-sm-2"/>
+                        <p:calendar id="dateInstallation" value="#{comptageAeController.dateInstallation}" maxdate="#{comptageAeController.dateDuJour}" required="true" pattern="dd/MM/yyyy" requiredMessage="veuillez indiquer la date d'installation" />
+                        <h:message for="dateInstallation" class="message-date"/>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <h:outputLabel value="Date service" for="dateService" class="col-sm-2"/>
+                        <p:calendar id="dateService" value="#{comptageAeController.dateService}" maxdate="#{comptageAeController.dateDuJour}" required="true" pattern="dd/MM/yyyy" requiredMessage="veuillez indiquer la date de mise en service" />
+                        <h:message for="dateService" class="message-date"/>
+                    </div>
+
+                    <div class="form-group row">
+                        <h:outputLabel value="Date pose" for="datePose" class="col-sm-2"/>
+                        <p:calendar id="datePose" value="#{comptageAeController.datePose}" maxdate="#{comptageAeController.dateDuJour}" required="true" pattern="dd/MM/yyyy" requiredMessage="veuillez indiquer la date de pose du comptage"/>
+                        <h:message for="datePose" class="message-date"/>
+                    </div>
+                    
+                    
+                    
+                    
+
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+
+
+                    
+
+                    
+
+       
+
+                    
+
+                    <div class="form-group row">
+                        <h:outputText value="Nombre digits" class="col-sm-2"/>
+                        <p:inputMask mask="99999999" id="nbDigits" class="col-sm-10" value="#{comptageAeController.nbDigits}" required="true" requiredMessage="veuillez indiquer le nombre de digits"></p:inputMask>
+                        <h:message for="nbDigits" class="message"/>
+                    </div>
+
+                    <div class="form-group row">
+                        <h:outputText value="Index pose" class="col-sm-2"/>
+                        <p:inputMask mask="99999999" id="indexPose" class="col-sm-10" value="#{comptageAeController.indexPose}" required="true" requiredMessage="veuillez indiquer l'index pose"></p:inputMask>>
+                        <h:message for="indexPose" class="message"/>
+                    </div>
+
+                    <div class="form-group row">
+                        <h:outputText value="Index dépose" class="col-sm-2"/>
+                        <p:inputText id="indexDepose" class="col-sm-10" value="#{comptageAeController.indexDepose}" required="true" requiredMessage="veuillez indiquer l'index dépose"></p:inputText>
+                    </div>
+                    <div class="form-group row">
+                        <h:outputText value="Marque" class="col-sm-2"/>
+                        <p:selectOneMenu id="marqueid" class="col-sm-10" value="#{comptageAeController.marqueid}" required="true" requiredMessage="veuillez sélectionner la marque du comptage">
+                            <f:selectItem itemLabel="Selectionner" itemValue="#{null}"/>
+                            <f:selectItems value="#{comptageAeController.listMarque}" var="marque" itemValue="#{marque.id}" itemLabel="#{marque.libelle}"/>
+                            <f:ajax execute="@this"/>
+                        </p:selectOneMenu>
+                        <h:message for="marqueid" class="message"/>
+                    </div>
+
+                    <div class="form-group row">
+                        <h:outputText value="Nature" class="col-sm-2"/>
+                        <p:selectOneMenu id="natureid" class="col-sm-10" value="#{comptageAeController.natureid}" required="true" requiredMessage="veuillez sélectionner la nature du comptage">
+                            <f:selectItem itemLabel="Selectionner" itemValue="#{null}"/>
+                            <f:selectItems value="#{comptageAeController.listNature}" var="nature" itemValue="#{nature.id}" itemLabel="#{nature.libelle}" />
+                            <f:ajax execute="@this"/>
+                        </p:selectOneMenu>
+                    </div>
+
+
+                    
+                    
+                    <div class="form-group row">
+                        <h:outputText value="Mode phase" class="col-sm-2"/>
+                        <p:selectOneMenu id="modePhase" class="col-sm-10" value="#{comptageAeController.modePhase}" required="true" requiredMessage="veuillez indiquer le mode de phase">
+                            <f:selectItem itemLabel="Selectionner" itemValue="#{null}"/>
+                            <f:selectItem itemLabel="Mono phase" itemValue="1"/>
+                            <f:selectItem itemLabel="Tri phase" itemValue="3"/>
+                        </p:selectOneMenu>
+                        <h:message for="modePhase" class="message"/>
+                    </div>
+                    
+                    
+                    <div class="form-group row">
+                        <h:outputText value="Coefficient lecture" class="col-sm-2"/>
+                        <p:inputText id="coefLecture" class="col-sm-10" value="#{comptageAeController.coeffLecture}" required="true" requiredMessage="veuillez indiquer le coefficient de lecture"></p:inputText>
+                        <h:message for="coefLecture" class="message"/>
+                    </div>
+                    <div class="form-group row">
+                        <h:outputText value="Etat comptage" class="col-sm-2"/>
+                        <h:selectOneRadio id="etatComptage" value="#{comptageAeController.etatComptage}" required="true" class="col-sm-2" requiredMessage="veuillez choisir l'état du comptage" >
+                            <f:selectItem itemValue="actif" itemLabel="Actif"/>
+                            <f:selectItem itemValue="inactif" itemLabel="Inactif"/>
+                        </h:selectOneRadio>
+                        <h:message for="etatCompage" class="message"/>
+                    </div>
+                    
+
+                    <div class="form-group row">
+                        <h:outputText value="Remise a zero" class="col-sm-2"></h:outputText>
+
+                        <h:selectOneRadio id="remiseZero" class="col-sm-2" value="#{comptageAeController.remiseZero}">
+                            <f:selectItem itemValue="vrai" itemLabel="Vrai"/>
+                            <f:selectItem itemValue="faux" itemLabel="Faux"/>
+                        </h:selectOneRadio>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <h:outputText value="Annee fabrication" class="col-sm-2"/>
+                        <p:selectOneMenu id="anneeFabrication" class="col-sm-10"  value="#{comptageAeController.anneeFabrication}"  required="true">
+                            <f:selectItem itemLabel="Selectionner" itemValue="#{null}"/>
+                            <f:selectItem itemLabel="2018" itemValue="2018"/>
+                            <f:selectItem itemLabel="2017" itemValue="2017"/>
+                            <f:selectItem itemLabel="2016" itemValue="2016"/>
+                            <f:selectItem itemLabel="2015" itemValue="2015"/>
+                            <f:selectItem itemLabel="2014" itemValue="2014"/>
+                            <f:selectItem itemLabel="2013" itemValue="2013"/>
+                            <f:selectItem itemLabel="2012" itemValue="2012"/>
+                            <f:selectItem itemLabel="2011" itemValue="2011"/>
+                            <f:selectItem itemLabel="2010" itemValue="2010"/>
+                            <f:selectItem itemLabel="2009" itemValue="2009"/>
+                            <f:selectItem itemLabel="2008" itemValue="2008"/>
+                            <f:selectItem itemLabel="2007" itemValue="2007"/>
+                            <f:selectItem itemLabel="2006" itemValue="2006"/>
+                            <f:selectItem itemLabel="2005" itemValue="2005"/>
+                            <f:selectItem itemLabel="2004" itemValue="2004"/>
+                            <f:selectItem itemLabel="2003" itemValue="2003"/>
+                            <f:selectItem itemLabel="2002" itemValue="2002"/>
+                            <f:selectItem itemLabel="2002" itemValue="2002"/>
+                            <f:selectItem itemLabel="2001" itemValue="2001"/>
+                            <f:selectItem itemLabel="2000" itemValue="2000"/>
+                            <f:selectItem itemLabel="1999" itemValue="1999"/>
+                            <f:selectItem itemLabel="1998" itemValue="1998"/>
+                            <f:selectItem itemLabel="1997" itemValue="1997"/>
+                            <f:selectItem itemLabel="1996" itemValue="1996"/>
+                            <f:selectItem itemLabel="1995" itemValue="1995"/>
+                            <f:selectItem itemLabel="1994" itemValue="1994"/>
+                            <f:selectItem itemLabel="1993" itemValue="1993"/>
+                            <f:selectItem itemLabel="1992" itemValue="1992"/>
+                            <f:selectItem itemLabel="1991" itemValue="1991"/>
+                            <f:selectItem itemLabel="1990" itemValue="1990"/>
+                            <f:selectItem itemLabel="1989" itemValue="1989"/>
+                            <f:selectItem itemLabel="1988" itemValue="1988"/>
+                            <f:selectItem itemLabel="1987" itemValue="1987"/>
+                            <f:selectItem itemLabel="1986" itemValue="1986"/>
+                            <f:selectItem itemLabel="1985" itemValue="1985"/>
+                            <f:selectItem itemLabel="1984" itemValue="1984"/>
+                            <f:selectItem itemLabel="1983" itemValue="1983"/>
+                            <f:selectItem itemLabel="1982" itemValue="1982"/>
+                            <f:selectItem itemLabel="1981" itemValue="1981"/>
+                            <f:selectItem itemLabel="1980" itemValue="1980"/>
+                            <f:selectItem itemLabel="1979" itemValue="1979"/>
+                            <f:selectItem itemLabel="1978" itemValue="1978"/>
+                            <f:selectItem itemLabel="1977" itemValue="1977"/>
+                            <f:selectItem itemLabel="1976" itemValue="1976"/>
+                            <f:selectItem itemLabel="1975" itemValue="1975"/>
+                            <f:selectItem itemLabel="1974" itemValue="1974"/>
+                            <f:selectItem itemLabel="1973" itemValue="1973"/>
+                            <f:selectItem itemLabel="1972" itemValue="1972"/>
+                            <f:selectItem itemLabel="1971" itemValue="1971"/>
+                            <f:selectItem itemLabel="1970" itemValue="1970"/>
+                            <f:selectItem itemLabel="1969" itemValue="1969"/>
+                            <f:selectItem itemLabel="1968" itemValue="1968"/>
+                            <f:selectItem itemLabel="1967" itemValue="1967"/>
+                            <f:selectItem itemLabel="1966" itemValue="1966"/>
+                            <f:selectItem itemLabel="1965" itemValue="1965"/>
+                            <f:selectItem itemLabel="1964" itemValue="1964"/>
+                            <f:selectItem itemLabel="1963" itemValue="1963"/>
+                            <f:selectItem itemLabel="1962" itemValue="1962"/>
+                            <f:selectItem itemLabel="1961" itemValue="1961"/>
+                            <f:selectItem itemLabel="1960" itemValue="1960"/>
+                            
+                        </p:selectOneMenu>
+                    </div>
+
+
+
+
+                    <div class="mx-auto espace" style="width: 100%;">
+                        <p:commandLink value="Ajouter" action="#{comptageAeController.ajouterComptageAe}" onclick="alert('Ajout éffectué.')" ajax="false" class="btn btn-success col-sm-2" style="margin-right:25px;margin-left: 25%;"></p:commandLink>
+                        <p:commandLink value="Annuler" action="/comptageAe/listComptage" process="@this" class="btn btn-secondary col-sm-2" ></p:commandLink>
+                    </div>
+
+
+
+
+                </h:form>
+            </ui:define>
+        </ui:composition>
+
+    </h:body>
+</ui:composition>
+

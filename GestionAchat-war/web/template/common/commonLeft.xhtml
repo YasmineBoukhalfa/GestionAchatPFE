@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <h:head>
+        <meta charset="UTF-8"/>
+        <link rel="stylesheet" href="#{request.contextPath}/css/commonstyle.css"/>
+        <link rel="stylesheet" href="#{request.contextPath}/css/bootstrap.css"/>
+
+        <script type="text/javascript">
+//            var url = window.location.href;
+//            window.history.go(-window.history.length);
+//            window.location.href = url;
+
+
+        </script>
+
+
+<!--<link rel="stylesheet" href="#{request.contextPath}/css/fontawesome/fontawesome.css" />-->
+        <!--<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"/>-->
+    </h:head>
+
+
+    <!--        <h:body>
+                <ui:composition>
+                    <h:form>         
+                        <div class="bg-dark">
+                            <p:growl id="messages" showDetail="true" />  
+                            <p:tieredMenu class="navbar-light bg-light test">
+                                <p:submenu label="Pdl" icon="ui-icon-plus">
+                                    <p:menuitem value="Ajouter" actionListener="#" ajax="false" icon="ui-icon-plus" />
+                                    <p:menuitem value="Modifier" actionListener="#" ajax="false" icon="fas fa-edit" />
+                                    <p:menuitem value="Consulter" actionListener="#" ajax="false" icon="ui-icon-document" />
+                                </p:submenu>
+        
+                                <p:submenu label="Comptage" icon="ui-icon-plus">
+                                    <p:menuitem value="Ajouter" actionListener="#" ajax="false" icon="ui-icon-plus" />
+                                    <p:menuitem value="Modifier" actionListener="#" ajax="false" icon="ui-icon-pencil" />
+                                    <p:menuitem value="Consulter" actionListener="#" ajax="false" icon="ui-icon-document" />
+                                </p:submenu>
+        
+                                <p:submenu label="Releve" icon="ui-icon-plus">
+                                    <p:menuitem value="Ajouter" actionListener="#" ajax="false" icon="ui-icon-plus" />
+                                    <p:menuitem value="Modifier" actionListener="#" ajax="false" icon="ui-icon-pencil" />
+                                    <p:menuitem value="Consulter" actionListener="#" ajax="false" icon="ui-icon-document" />
+                                </p:submenu>
+                            </p:tieredMenu>
+                        </div>
+                    </h:form>
+        
+                </ui:composition>
+            </h:body>-->
+
+
+    <h:body>
+        <ui:composition>
+
+            <!--            <div class="sidebar sidebar-custom">
+                            <ul class="sidebar-custom-header">
+                                <li class="submenu-parent-pdl">PDL
+                                    <ul class="submenu-pdl">
+                                        <li class="submenu-child" onclick="location.href='ajoutPdl.xhtml'"><a href="pdl/ajoutPdl.xhtml">Ajouter</a></li>
+                                        <li class="submenu-child"><a href="#">Modifier</a></li>
+                                        <li class="submenu-child"><a href="#">Consulter</a></li>
+                                    </ul>
+                                </li>
+                                    
+                                
+                                <li class="submenu-parent-comptage">Comptage
+                                    <ul class="submenu-comptage">
+                                        <li class="submenu-child"><h:link outcome="ajouterComptage.xhtml" value="Test Page" /></li>
+                                        <li class="submenu-child"><a href="#">Modifier</a></li>
+                                        <li class="submenu-child"><a href="#">Consulter</a></li>
+                                    </ul>
+                                </li>
+                                
+                                <li class="submenu-parent-releve">Releve
+                                    <ul class="submenu-releve">
+                                        <li class="submenu-child"><a href="#">Ajouter</a></li>
+                                        <li class="submenu-child"><a href="#">Modifier</a></li>
+                                        <li class="submenu-child"><a href="#">Consulter</a></li>
+                                    </ul>
+                                </li>
+                                
+                                <li class="submenu-parent-deco">Deconnecter</li>
+                            </ul>
+            
+                        </div>-->
+
+
+            <div class="barre">
+                <a href="#{request.contextPath}/faces/pdl/listePdl.xhtml" class="menu-item"><i class="fas fa-list"></i> Liste PDL</a>
+                <a href="#{request.contextPath}/faces/pdl/ajoutPdl.xhtml" class="menu-item"><i class="fas fa-plus"></i> Ajouter PDL</a>
+                <a href="#{request.contextPath}/faces/comptageAe/listComptage.xhtml" class="menu-item"><i class="fas fa-list"></i> Liste comptages</a>
+                <a href="#{request.contextPath}/faces/comptageAe/ajouterComptage.xhtml" class="menu-item"><i class="fas fa-plus"></i> Ajouter comptage</a>
+                
+                <a href="#{request.contextPath}/faces/faces/releve/ValidationReleve.xhtml" class="menu-item"><i class="fas fa-list"></i> Liste relèves validées</a>
+                
+                <a href="#{request.contextPath}/faces/faces/releve/NonValidationReleve.xhtml" class="menu-item"><i class="fas fa-list"></i> Liste relèves non validées</a>
+                
+                <a href="#{request.contextPath}/faces/faces/releve/CalculEnergie.xhtml" class="menu-item"><i class="fas fa-list"></i> Calcul Energie</a>
+                
+                <a href="#{request.contextPath}/faces/faces/releve/Releve.xhtml" class="menu-item"><i class="fas fa-list"></i> Relève</a>
+                
+                
+                <p:commandLink process="@this" action="#{utilisateurController.destroy()}" class="menu-item" ><i class="fas fa-sign-out-alt"></i>Deconnecter</p:commandLink>
+
+
+
+            
+            </div>
+
+
+
+        </ui:composition>
+    </h:body>
+
+
+</html>

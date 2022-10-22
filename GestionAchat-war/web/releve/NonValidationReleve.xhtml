@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pm="http://primefaces.org/mobile">
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Gestion Achat</title>
+            </f:facet>
+        </h:head>
+
+        <style type="text/css">
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: geneva, arial, helvetica, sans-serif;
+                font-size:90%;
+            }
+        </style>
+
+        <h:body>
+
+            <ui:composition template="/template/commonLayout.xhtml">
+                <ui:define name="content-title">
+                    <h1 class="titre">Fiches relève non validées</h1>
+                </ui:define>
+
+                <ui:define name="content">
+
+                    <h:form id="form">
+                        <h:panelGrid style="float: left; border: 1px;margin-left:30px" columns="2">
+
+                            <f:view>
+
+                                <p:dataTable var="tbl" value="#{nonValidationReleveController.listReleveNonValidee}" rows="7" paginator="true">                        
+                                    <p:column headerText="Référence PDL">
+                                        <h:outputText value="#{tbl.comptageAeid.pdlAeid.reference}" />
+                                    </p:column>
+
+                                    <p:column headerText="Intitulé Comptage">
+                                        <h:outputText value="#{tbl.comptageAeid.intituleComptage}" />
+                                    </p:column>
+
+                                    <p:column headerText="Mode Relève">
+                                        <h:outputText value="#{tbl.modeDeterminationid.libelle}" />
+                                    </p:column>
+
+                                    <p:column headerText="Quantité">
+                                        <h:outputText value="#{tbl.quantite}" />
+                                    </p:column>
+
+                                    <p:column headerText="Date de relève">
+                                        <h:outputText value="#{tbl.dateHeureReleve}" />
+                                    </p:column>
+
+                                    <p:column headerText="Action">
+                                        <p:commandLink class="btn btn-success bouton-liste2" title="Validation" update="@form" process="@form" action="#{nonValidationReleveController.valider()}">
+                                            <i class="fas fa-check icon-blanc"></i>
+                                            <f:param name="valid" value="#{tbl.id}"/>
+                                        </p:commandLink>
+
+                                        <p:commandLink class="btn btn-primary bouton-liste2" title="Consultation" onclick="PF('cons').show()"  action="#{nonValidationReleveController.consulter()}" update=":formCons">
+                                            <i class="fas fa-search icon-blanc"></i>
+                                            <f:param name="consult" value="#{tbl.id}" />
+                                        </p:commandLink>
+
+                                        <p:commandLink class="btn btn-warning bouton-liste2" title="Modification" onclick="PF('edit').show()" action="#{nonValidationReleveController.initialiserController()}" update=":formEdit">
+                                            <i class="fas fa-edit "></i>
+                                            <f:param name="edit" value="#{tbl.id}" />
+                                        </p:commandLink>
+
+                                        <p:commandLink class="btn btn-danger bouton-liste2" title="Suppression" onclick="PF('supp').show()" action="#{nonValidationReleveController.recuperer()}" >
+                                            <i class="fas fa-trash-alt icon-blanc"></i>
+                                            <f:param name="supp" value="#{tbl.id}" />
+                                        </p:commandLink>
+
+                                    </p:column>
+                                </p:dataTable>
+                            </f:view>
+                        </h:panelGrid>
+
+                    </h:form>
+
+
+
+
+                    <p:dialog widgetVar="cons" dynamic="true" header="Consulter la relève">
+                        <h:form id="formCons">
+                            <h:panelGrid  id="paneldialogCons" columns="2">
+                                <h:outputLabel for="typePDL" value="Type-PDL : "/>
+                                <h:outputText id="typePDL" value="#{nonValidationReleveController.releve.comptageAeid.pdlAeid.typeAeid.libelle}"/>
+
+                                <h:outputLabel for="pdlId" value="PDL-AE : "/>
+                                <h:outputText id="pdlId" value="#{nonValidationReleveController.releve.comptageAeid.pdlAeid.reference}-#{nonValidationReleveController.releve.comptageAeid.pdlAeid.intitule}" />
+
+                                <h:outputLabel for="cptId" value="Comptage : "/>
+                                <h:outputText id="cptId" value="#{nonValidationReleveController.releve.comptageAeid.numSerie}-#{nonValidationReleveController.releve.comptageAeid.intituleComptage}" />   
+
+                                <h:outputLabel for="typeR" value="Mode Relève : " />
+                                <h:outputText id="typeR" value="#{nonValidationReleveController.releve.modeDeterminationid.libelle}" />
+
+                                <h:outputLabel for="ancienIndex" value="Ancien Index : "/>
+                                <h:outputText id="ancienIndex" value="#{nonValidationReleveController.releve.ancienIndex}" />
+
+                                <h:outputLabel for="index" value="Index Relève : "/>
+                                <h:outputText id="index" value="#{nonValidationReleveController.releve.indexReleve}" />
+
+                                <p:outputLabel for="date" value="Date et Heure Relève : " />
+                                <h:outputText id="date" value="#{nonValidationReleveController.releve.dateHeureReleve}"/>
+
+                                <h:outputLabel for="mode" value="Mode Phase : "/>
+                                <h:outputText id="mode" value="#{nonValidationReleveController.comptageAe.modePhase}" />
+
+                                <h:outputLabel for="qte" value="Quantité : "/>
+                                <h:outputText id="qte" value="#{nonValidationReleveController.releve.quantite}"/>
+
+                                <h:outputLabel for="description" value="Description : "/>
+                                <h:outputText id="description" value="#{nonValidationReleveController.releve.description}" />
+                            </h:panelGrid>
+                        </h:form>
+                    </p:dialog>
+
+                    <p:dialog widgetVar="supp" dynamic="true" header="Supprimer la relève" resizable="false">
+                        <h:outputText value="Etes vous sure de vouloir supprimer cette relève ?" />
+                        <br/>
+                        <p:commandButton style="margin-left: 150px;" value="Oui" action="#{nonValidationReleveController.delete()}" ajax="true" update=":form" >
+                            <f:param name="delete" value="#{tbl.id}" />
+                        </p:commandButton>
+                    </p:dialog>
+
+                    <p:dialog widgetVar="edit" dynamic="true" header="Modifier la relève">
+                        <h:form id="formEdit">
+                            <h:panelGrid columns="4">
+                                <h:outputLabel for="typeId" value="Type-PDL : "/>
+                                <p:inputText id="typeId" value="#{nonValidationReleveController.type}" label="" disabled="true" />
+
+                                <h:outputLabel for="pdlId" value="PDL-AE : "/>
+                                <p:inputText id="pdlId" value="#{nonValidationReleveController.pdl}" label="" disabled="true" />
+
+                                <h:outputLabel for="cptId" value="Comptage : "/>
+                                <p:inputText id="cptId" value="#{nonValidationReleveController.cpt}" label="" disabled="true" />     
+
+                                <h:outputLabel for="ancienIndex" value="Ancien Index : "/>
+                                <p:inputText  id="ancienIndex" value="#{nonValidationReleveController.ancienIndex}" disabled="true" />
+
+                                <p:outputLabel for="datetime" value="Date et Heure Relève : " />
+                                <p:calendar id="datetime" value="#{nonValidationReleveController.dateHeureReleve}" pattern="dd/MM/yyyy HH:mm:ss" disabled="true" navigator="true"
+                                            disabledWeekends="true" mindate="01/01/2012"/>
+
+                                <h:outputLabel for="mois" value="Mois : "/>
+                                <p:inputText id="mois" value="#{nonValidationReleveController.mois}" label="" disabled="true" />  
+
+
+                                <p:outputLabel value="Mode Relève : "/>
+                                <p:selectOneMenu value="#{nonValidationReleveController.releve.modeDeterminationid.id}" required="true">
+                                    <f:selectItem value="#{null}" itemLabel="Sélectionner un mode relève" />
+                                    <f:selectItems value="#{nonValidationReleveController.listModeDetermination}" var="mode" itemLabel="#{mode.libelle}" itemValue="#{mode.id}"/>
+                                    <f:ajax execute="@this" render="index quantite" listener="#{nonValidationReleveController.recupRender()}" />
+                                </p:selectOneMenu>
+
+                                <h:outputText value="Index Relève : "/>
+                                <p:inputMask mask="99999999" id="index" value="#{nonValidationReleveController.indexReleve}" disabled="#{nonValidationReleveController.render}"/>
+
+                                <h:outputText value="Quantité : "/>
+                                <p:inputText id="quantite" value="#{nonValidationReleveController.quantite}" disabled="#{!nonValidationReleveController.render}"/>   
+
+                                <h:outputText value="Description : "/>
+                                <h:inputText id="description" value="#{nonValidationReleveController.description}" />
+                            </h:panelGrid>
+                            <div class="container col-sm-4">
+                                <p:commandLink id="modif" class="btn btn-warning bouton-releve-modifier" value="Modifier" action="#{nonValidationReleveController.modifier()}" ></p:commandLink>
+                            </div>
+                        </h:form>
+                    </p:dialog>
+                </ui:define>
+            </ui:composition>
+        </h:body>
+    </f:view>
+
+</html>

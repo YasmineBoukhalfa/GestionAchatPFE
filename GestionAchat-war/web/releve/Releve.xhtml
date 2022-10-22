@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Gestion Achat</title>
+            </f:facet>
+        </h:head>
+
+        <style type="text/css">
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: geneva, arial, helvetica, sans-serif;
+                font-size:90%;
+            }
+        </style>
+
+        <h:body>
+
+            <ui:composition template="/template/commonLayout.xhtml">
+                <ui:define name="content-title">
+                    <h1 class="titre">Informations de la relève</h1>
+                </ui:define>
+
+                <ui:define name="content">
+
+
+
+                    <h:form id="form">
+                        <div class="form-group row">
+                            <p:outputLabel value="Type-PDL : " class="col-sm-2"/>
+                            <p:selectOneMenu value="#{releveController.codePdl}" required="true" class="col-sm-4">
+                                <f:selectItem itemValue="#{null}" itemLabel="Sélectionner un type PDL" />
+                                <f:selectItems actionListener="#{releveController.initialiserPdlByType}" value="#{releveController.listTypePdl}" var="typepdl" itemValue="#{typepdl.codePdl}" itemLabel="#{typepdl.libelle}"/>
+                                <f:ajax execute="@this" render="pdlId" listener="#{releveController.initialiserPdlByType()}" />
+                            </p:selectOneMenu>
+                        </div>
+
+
+                        <div class="form-group row">
+
+                            <p:outputLabel value="PDL :" class="col-sm-2"/>
+                            <p:selectOneMenu value="#{releveController.pdlAeid}" id="pdlId"  required="true" class="col-sm-4">
+                                <f:selectItem value="#{null}" itemLabel="Sélectionner un PDL" />
+                                <f:selectItems value="#{releveController.listPdlByType}" var="pdl" itemValue="#{pdl.id}" itemLabel="#{pdl.reference}-#{pdl.intitule}" />
+                                <f:ajax execute="@this" render="cptId" listener="#{releveController.recupListCpt()}" />
+                            </p:selectOneMenu>
+                        </div>
+
+                        <div class="form-group row">
+                            <p:outputLabel value="Comptage : " class="col-sm-2"/>
+                            <p:selectOneMenu class="col-sm-4" value="#{releveController.comptageAe.id}" id="cptId" required="true">
+                                <f:selectItem value="#{null}" itemLabel="Sélectionner un comptage" />
+                                <f:selectItems value="#{releveController.listCpt}" var="cpt" itemLabel="#{cpt.numSerie}-#{cpt.intituleComptage}" itemValue="#{cpt.id}"/>
+                                <f:ajax execute="@this" render="ancienIndex" listener="#{releveController.recupAncienIndex()}" />
+                            </p:selectOneMenu>
+                        </div>
+
+                        <div class="form-group row">
+                            <p:outputLabel value="Mode Relève : " class="col-sm-2"/>
+                            <p:selectOneMenu class="col-sm-4" value="#{releveController.modeDeterminationid}" required="true">
+                                <f:selectItem value="#{null}" itemLabel="Sélectionner un mode relève" />
+                                <f:selectItems value="#{releveController.listModeDetermination}" var="mode" itemLabel="#{mode.libelle}" itemValue="#{mode.id}"/>
+                                <f:ajax execute="@this" render="nouvelIndex quantite" listener="#{releveController.recupRender()}" />/>
+                            </p:selectOneMenu>
+                        </div>
+
+                        <div class="form-group row">
+                            <h:outputLabel class="col-sm-2" for="ancienIndex" value="Ancien Index : "/>
+                            <p:inputMask mask="99999999" class="col-sm-2" id="ancienIndex" value="#{releveController.ancienIndex}" disabled="true" />
+                        </div>
+
+                        <div class="form-group row">
+                            <h:outputLabel class="col-sm-2" for="nouvelIndex" value="Nouvel Index : "/>
+                            <p:inputMask class="col-sm-2"  mask="99999999" id="nouvelIndex" value="#{releveController.indexReleve}" required="#{releveController.render}" requiredMessage="Nouvel index est obligatoire"  disabled="#{releveController.render}" ></p:inputMask>
+                        </div>
+
+                        <div class="form-group row">
+                            <p:outputLabel class="col-sm-2" value="Description :" />
+                            <p:inputTextarea class="col-sm-4" rows="5" cols="28" value="#{releveController.description}" autoResize="true"/>
+                        </div>
+                        <div class="form-group row">
+                            <h:outputText value="Quantité : " class="col-sm-2"/>
+                            <p:inputText id="quantite" class="col-sm-4" value="#{releveController.quantite}" disabled="#{!releveController.render}"/>
+                        </div>
+
+                        <div class="form-group row">
+                            <h:outputText value="" class="col-sm-2"></h:outputText>
+                            <p:commandLink id="valid" action="#{releveController.ajouterReleve()}" value="Valider" class="btn btn-success col-sm-2" ajax="false"></p:commandLink>
+                        </div>
+                    </h:form>
+                </ui:define>
+            </ui:composition>
+        </h:body>
+    </f:view>
+
+</html>

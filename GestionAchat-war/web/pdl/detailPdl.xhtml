@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+
+      xmlns:p="http://primefaces.org/ui">
+    <f:view contentType="text/html">
+        <h:head>
+            <title>Detail PDL</title>
+        </h:head>
+
+        <ui:define name="Title">
+            detail pdl
+        </ui:define>
+
+        <style type="text/css">
+            body {
+
+                margin: 0;
+                padding: 0;
+                font-family: geneva, arial, helvetica, sans-serif;
+                font-size:90%;
+            }
+        </style>
+
+        <h:body>
+
+            <ui:composition template="/template/commonLayout.xhtml">
+                <ui:define name="content-title">
+                    <h1 class="titre">Détails PDL</h1>
+                </ui:define>
+
+                <ui:define name="content">
+
+
+
+
+
+                    <h:form id="ki"  >
+
+
+
+
+
+                        <div class="consulter">
+
+                            <div class="form-group row">
+                                <h:outputText  value="Reference:" class="col-sm-2" />
+                                <h:panelGroup>
+                                    <h:outputText  id="reference" class="col-sm-8" value="#{detailPdlController.pdlAe.reference}" ></h:outputText>
+                                </h:panelGroup>
+                            </div>
+
+                            <div class="form-group row">
+                                <h:outputText  value="Intitule:" class="col-sm-2" />  
+                                <h:panelGroup >
+                                    <h:outputText  id="intitule" class="col-sm-8" value="#{detailPdlController.pdlAe.intitule}" >
+                                    </h:outputText>
+                                </h:panelGroup>
+                            </div>
+
+                            <div class="form-group row">
+                                <h:outputText  value="Puissance installée:" class="col-sm-2"/> 
+                                <h:panelGroup >
+                                    <h:outputText id="puissance" class="col-sm-8" value="#{detailPdlController.pdlAe.puissance}" />
+                                </h:panelGroup>
+                            </div>
+
+                            <div class="form-group row">
+                                <h:outputText  value="Tension arrivée:" class="col-sm-2" /> 
+                                <h:panelGroup>
+                                    <h:outputText  id="tensarrive" class="col-sm-8" value="#{detailPdlController.pdlAe.tensionArriveeid.valeur}"  >
+                                    </h:outputText>
+                                </h:panelGroup>
+                            </div>
+
+
+                            <div class="form-group row">
+                                <h:outputText  value="Tension depart:" class="col-sm-2" /> 
+                                <h:panelGroup>
+                                    <h:outputText  id="tensdepart" class="col-sm-8" value="#{detailPdlController.pdlAe.tensionDepartid.valeur}"  >
+                                    </h:outputText>
+                                </h:panelGroup>
+                            </div>
+
+                            <div class="form-group row">
+                                <h:outputText  value="Type PDL:" class="col-sm-2" /> 
+                                <h:panelGroup>
+                                    <h:outputText  id="typepdl" class="col-sm-8" value="#{detailPdlController.pdlAe.typeAeid.libelle}">
+                                    </h:outputText>
+                                </h:panelGroup>
+                            </div>
+
+                            <div class="form-group row">
+                                <h:outputText  value="Date Pv" class="col-sm-2" /> 
+                                <h:panelGroup>
+                                    <h:outputText  id="date" class="col-sm-8" value="#{detailPdlController.pdlAe.datePv}"  >
+                                    </h:outputText>
+                                </h:panelGroup>
+                            </div>
+
+                            <div class="form-group row">
+                                <h:outputText  value="Partie emmetrice:" class="col-sm-2" /> 
+                                <h:panelGroup>
+                                    <h:outputText  id="partieE" class="col-sm-8" value="#{detailPdlController.pdlAe.partieEmmetriceid.libelle}">
+                                    </h:outputText>
+                                </h:panelGroup>
+                            </div>
+
+                            <div class="form-group row">
+                                <h:outputText  value="Partie receptrice:" class="col-sm-2" /> 
+                                <h:panelGroup>
+                                    <h:outputText  id="partieR" class="col-sm-8" value="#{detailPdlController.pdlAe.partieReceptriceid.libelle}" >
+                                    </h:outputText>
+                                </h:panelGroup>
+                            </div>
+
+                            <div class="form-group row">
+                                <h:outputText  value="Adresse:" class="col-sm-2" /> 
+                                <h:panelGroup>
+                                    <h:outputText  id="adresse" class="col-sm-8" value="#{detailPdlController.pdlAe.adrPdl}">
+                                    </h:outputText>
+                                </h:panelGroup>
+                            </div>
+
+                            <div class="form-group row">
+                                <h:outputText  value="Longitude:" class="col-sm-2" /> 
+                                <h:panelGroup>
+                                    <h:outputText id="longi" class="col-sm-8" value="#{detailPdlController.pdlAe.coordonneeGeoid.longitude}">
+                                    </h:outputText>
+                                </h:panelGroup>
+                            </div>
+
+                            <div class="form-group row">
+                                <h:outputText  value="Lattitude:" class="col-sm-2" /> 
+                                <h:panelGroup>
+                                    <h:outputText  id="latti" class="col-sm-8" value="#{detailPdlController.pdlAe.coordonneeGeoid.latitude}">
+                                    </h:outputText>
+                                </h:panelGroup>
+                            </div>
+
+
+                            <div class="mx-auto espace" style="width: 100%;">
+                                <p:commandLink value="Retour" process="@this" action="listePdl" class="btn btn-secondary col-sm-2" >Retour</p:commandLink>
+                            </div>
+
+
+                        </div>
+
+
+                    </h:form>
+
+
+
+                </ui:define>
+            </ui:composition>
+        </h:body>
+    </f:view>
+</html>
+

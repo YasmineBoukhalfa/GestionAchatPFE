@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Gestion Achat</title>
+            </f:facet>
+        </h:head>
+
+
+        <h:body>
+            <ui:composition template="/template/commonLayout.xhtml">
+                <ui:define name="content-title">
+                </ui:define>
+
+                <ui:define name="content">
+                    <div class="jumbotron welcome-jumbotron">
+                        <div class="">
+                            <h1 class="display-4" >Bienvenue</h1>
+                            <hr class="my-4">
+                                <div class="card-deck">
+                                    <a href="#{request.contextPath}/faces/pdl/listePdl.xhtml" class="card-a col-sm-3">
+                                        <div class="card-custom">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Point de livraison</h5>
+                                                <p class="card-text">Acceder a la liste des points de livraisons pour ajouter, consulter, modifier ou supprimer un ou plusieurs PDL.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+
+
+                                    <a href="#{request.contextPath}/faces/comptageAe/listComptage.xhtml" class="card-a col-sm-3">
+                                        <div class="card-custom">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Comptage</h5>
+                                                <p class="card-text">Acceder a la liste des comptages pour ajouter, consulter, modifier ou supprimer un ou plusieurs comptage.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                    <a href="#{request.contextPath}/faces/faces/releve/NonValidationReleve.xhtml" class="card-a col-sm-3">
+                                        <div class="card-custom">
+                                            <div class="card-body">
+                                                <h5 class="card-title">
+                                                    <p:graphicImage value="/css/images/unchecked.png" class="icon-table" />
+                                                    Fiches non validées
+                                                </h5>
+                                                <p class="card-text">Acceder a la liste des fiches relèves non validées pour consulter, valider, modifier ou supprimer une ou plusieurs fiches.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+
+
+                                    <a href="#{request.contextPath}/faces/faces/releve/ValidationReleve.xhtml" class="card-a col-sm-3">
+                                        <div class="card-custom">
+                                            <div class="card-body">
+                                                <h5 class="card-title">
+                                                    <p:graphicImage value="/css/images/ch.png"  />
+                                                    Fiches validées
+                                                </h5>
+                                                <p class="card-text">Acceder a la liste des fiches relèves validées</p>
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                </div>
+
+                            </hr>
+
+                        </div>
+                    </div>
+                </ui:define>
+            </ui:composition>
+
+        </h:body>
+    </f:view>
+
+</html>
+
+

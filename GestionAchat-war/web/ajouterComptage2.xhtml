@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pm="http://primefaces.org/mobile">
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Gestion Achat</title>
+            </f:facet>
+        </h:head>
+
+        <style type="text/css">
+            body {
+                background-image: url('C:\Users\Ihab.B\Desktop\body.jpg');
+                margin: 0;
+                padding: 0;
+                font-family: geneva, arial, helvetica, sans-serif;
+                font-size:90%;
+            }
+        </style>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="120" resizable="true" closable="true" collapsible="true">
+                    <h2>Gestion des Achats</h2>
+                    <h:form>
+                        <p:clock pattern="HH:mm:ss dd.MM.yyyy" />
+                    </h:form>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
+                    Ici le footer
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="250" header="Menu" collapsible="true">
+                    <h:form>
+                        <p:growl>
+                            <autoUpdate />
+                        </p:growl>
+                        <p:panelMenu style="width:240px">
+                            <p:submenu label="PDL">
+                                <p:menuitem value="Ajout" icon="ui-icon-plus" />
+                                <p:menuitem value="Modification" icon="ui-icon-refresh" />
+                                <p:menuitem value="Consultation" icon="ui-icon-search" />
+                            </p:submenu>
+                            <p:submenu label="Comptage">
+                                <p:menuitem value="Ajout" icon="ui-icon-plus"/>
+                                <p:menuitem value="Modification" icon="ui-icon-refresh"/>
+                                <p:menuitem value="Consultation" icon="ui-icon-search"/>
+                            </p:submenu>
+
+                            <p:separator />
+
+                            <p:submenu label="Relève">
+                                <p:menuitem value="Informations globales" icon="ui-icon-document" action="Releve"/>
+                                <p:menuitem value="Fiches validées" icon="ui-icon-document" action="ValidationReleve"/>
+                                <p:menuitem value="Fiches non validées" icon="ui-icon-document" action="NonValidationReleve"/>
+                                <p:menuitem value="Calculs Achats" icon="ui-icon-search" action="CalculEnergie"/>
+                            </p:submenu>
+
+                            <p:separator/>
+
+                            <p:submenu label="Déconnexion">
+                                <p:menuitem value="Déconnexion" icon="ui-icon-power"/>
+                            </p:submenu>
+                        </p:panelMenu>
+                    </h:form>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                    <p:fieldset legend="Fiches Relève non Validées" style="background-color:#eff5fa">
+                        <h:form id="form">
+                            <h:panelGrid style="float: left; border: 1px;margin-left:40px" columns="2">
+
+                                <f:view>
+
+                                    <p:dataTable var="tbl" value="#{nonValidationReleveController.listReleveNonValidee}" rows="15" paginator="true">                        
+                                        <p:column headerText="PDL">
+                                            <h:outputText value="#{releveController.pdlAeid}" />
+                                        </p:column>
+
+                                        <p:column headerText="Comptage">
+                                            <h:outputText value="#{releveController.comptageAeid}" />
+                                        </p:column>
+
+                                        <p:column headerText="Mode Détermination">
+                                            <h:outputText value="#{releveController.modeDeterminationid}" />
+                                        </p:column>
+
+                                        <p:column headerText="Quantité">
+                                            <h:outputText value="#{releveController.quantite}" />
+                                        </p:column>
+                                        
+                                        <p:column headerText="Date de relève">
+                                            <h:outputText value="#{releveController.dateHeureReleve}" />
+                                        </p:column>
+
+                                        <p:column headerText="Action">
+                                            <p:commandButton icon="ui-icon-check" title="Validation" onclick="PF('validate').show();">
+                                                <f:param name="valid" value="#{tbl.id}"/>
+                                            </p:commandButton>
+
+                                            <p:commandButton icon="ui-icon-search" title="Consultation" onclick="PF('cons').show()" action="#{nonValidationReleveController.consulter}">
+                                                <f:param name="consult" value="#{tbl.id}" />
+                                            </p:commandButton>
+                                            <p:commandButton icon="ui-icon-trash" title="Suppression" onclick="PF('supp').show()">
+                                                <f:param name="supp" value="#{tbl.id}" />
+                                            </p:commandButton>
+                                        </p:column>
+                                    </p:dataTable>
+                                </f:view>
+                            </h:panelGrid>
+
+
+
+                            <h:panelGrid style="float: left; border: 1px;margin-left:40px" columns="3">
+                                <h:commandLink>
+                                    <p:graphicImage value="resources/images/excel.png" />
+                                    <p:dataExporter type="xls" target="tbl" fileName="Fiches Releve non validées" pageOnly="true"/>
+                                </h:commandLink>
+
+                                <h:commandLink>
+                                    <p:graphicImage value="resources/images/pdf.png" />
+                                    <p:dataExporter type="pdf" target="tbl" fileName="Fiches Releve non validées" pageOnly="true" />
+                                </h:commandLink>
+
+                                <h:commandLink>
+                                    <p:graphicImage value="resources/images/xml.png" />
+                                    <p:dataExporter type="xml" target="tbl" fileName="Fiches Releve non validées" pageOnly="true" />
+                                </h:commandLink>
+                            </h:panelGrid>
+
+                            
+                            
+                            
+                            <p:dialog widgetVar="validate" dynamic="true">
+                                <h:outputText value="Etes vous sure de vouloir valider cette relève ?" />
+                                <br/>
+                                <p:commandButton style="margin-left: 130px" value="Oui" action="#{nonValidationReleveController.valider}"/>
+                            </p:dialog>
+
+
+                            
+
+                            <p:dialog widgetVar="cons" dynamic="true" >
+                                <h:form id="form">
+                                    <h:panelGrid columns="2">
+                                        <h:outputText value="Index Relève"/>
+                                        <h:outputText id="pdl" value="#{nonValidationReleveController.releve.indexReleve}" />
+
+                                        <h:outputText value="Mode Phase"/>
+                                        <h:outputText id="comptage" value="#{nonValidationReleveController.modePhase}" />
+
+                                        <h:outputText value="Description"/>
+                                        <h:outputText id="modeDetermination" value="#{nonValidationReleveController.releve.description}" />
+                                    </h:panelGrid>
+                                </h:form>
+                            </p:dialog>
+
+
+
+
+
+
+                            <p:dialog widgetVar="supp" dynamic="true" >
+                                <h:outputText value="Etes vous sure de vouloir supprimer cette relève ?" />
+                                <br/>
+                                <p:commandButton style="margin-left: 130px" value="Oui" action="#{nonValidationReleveController.delete}"/>
+                            </p:dialog>
+
+                        </h:form>
+                    </p:fieldset>
+                </p:layoutUnit>
+
+            </p:layout>
+        </h:body>
+    </f:view>
+
+</html>
+
+

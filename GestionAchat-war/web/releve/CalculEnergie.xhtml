@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Gestion Achat</title>
+            </f:facet>
+        </h:head>
+
+        <style type="text/css">
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: geneva, arial, helvetica, sans-serif;
+                font-size:90%;
+            }
+        </style>
+
+        <h:body>
+            <ui:composition template="/template/commonLayout.xhtml">
+                <ui:define name="content-title">
+                    <h1 class="titre">Calcul sur les Achats</h1>
+                </ui:define>
+
+                <ui:define name="content">
+
+
+
+                    <h:form id="form">
+
+                        <div class="form-group row">
+                            <h:outputText value="Année : " class="col-sm-1"/>
+                            <p:selectOneMenu class="col-sm-3" value="#{calculAchatController.annee}" required="true">
+                                <f:selectItem value="#{null}" itemLabel="Sélectionner une année" />
+                                <f:selectItem itemValue="2018" itemLabel="2018"/>
+                                <f:selectItem itemValue="2017" itemLabel="2017"/>
+                                <f:selectItem itemValue="2016" itemLabel="2016"/>
+                                <f:selectItem itemValue="2015" itemLabel="2015"/>
+                                <f:selectItem itemValue="2014" itemLabel="2014"/>
+                            </p:selectOneMenu>
+                        </div>
+
+                        <div class="form-group row">
+                            <h:outputText class="col-sm-1" value="Mois : "/>
+                            <p:selectOneMenu class="col-sm-3" value="#{calculAchatController.mois}" required="true">
+                                <f:selectItem value="#{null}" itemLabel="Sélectionner un mois" />
+                                <f:selectItem itemValue="1" itemLabel="Janvier"/>
+                                <f:selectItem itemValue="2" itemLabel="Février"/>
+                                <f:selectItem itemValue="3" itemLabel="Mars"/>
+                                <f:selectItem itemValue="4" itemLabel="Avril"/>
+                                <f:selectItem itemValue="5" itemLabel="Mai"/>
+                                <f:selectItem itemValue="6" itemLabel="Juin"/>
+                                <f:selectItem itemValue="7" itemLabel="Juillet"/>
+                                <f:selectItem itemValue="8" itemLabel="Aout"/>
+                                <f:selectItem itemValue="9" itemLabel="Septembre"/>
+                                <f:selectItem itemValue="10" itemLabel="Octobre"/>
+                                <f:selectItem itemValue="11" itemLabel="Novembre"/>
+                                <f:selectItem itemValue="12" itemLabel="Décembre"/>
+                            </p:selectOneMenu>
+                        </div>
+
+                        <div class="form-group row">
+                            <h:outputText class="col-sm-1" value=""/>
+                            <p:commandLink id="calc" class="btn btn-success col-sm-2" action="#{calculAchatController.calculAchat()}" value="Calculer" update=":form"></p:commandLink>
+                        </div>
+
+                        <p:fieldset legend="Achat Energie" style="background-color:#eff5fa">
+
+                            <div class="form-group row">
+                                <p:outputLabel value="Achats bruts : " class="col-sm-2" for="achatBrut"/>
+                                <p:inputText readonly="true" id="achatBrut" value="#{calculAchatController.brut}"></p:inputText>
+                                <p:outputLabel value="KWh"/>
+                            </div>
+
+                            <div class="form-group row">
+                                <p:outputLabel value="Achats nets : " class="col-sm-2" for="achatNet"/>
+                                <p:inputText readonly="true" id="achatNet" value="#{calculAchatController.net}"></p:inputText>
+                                <p:outputLabel value="KWh"/>
+                            </div>
+
+                            <div class="form-group row">
+                                <p:outputLabel value="Achat energie total (Réseau HTB) :" class="col-sm-3" for="total"/>
+                                <p:inputText readonly="true" id="total" value="#{calculAchatController.netDist}"></p:inputText>
+                                <p:outputLabel value="KWh"/>
+                            </div>
+
+                        </p:fieldset>
+
+                        <p:fieldset legend="Perte Energie" style="background-color:#eff5fa">
+                            <div class="form-group row">
+                                <p:outputLabel value="Pertes de distribution :" class="col-sm-2" for="qtPerte"/>
+                                <p:inputText readonly="true" id="qtPerte" value="#{calculAchatController.perte}"></p:inputText>
+                                <p:outputLabel value="KWh"/>
+                            </div>
+                            
+                            <div class="form-group row">
+                                <p:outputLabel value="Taux de pertes : " class="col-sm-2" for="tauxPerte"/>
+                                <p:inputText id="tauxPerte" label="Taux de pertes" value="#{calculAchatController.tauxPerte}"/>
+                                <p:outputLabel value="%"/>
+                            </div>
+                        </p:fieldset>
+
+
+                    </h:form>
+                </ui:define>
+            </ui:composition>
+
+        </h:body>
+    </f:view>
+
+</html>
+
+

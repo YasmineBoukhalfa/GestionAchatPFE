@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        Hello from Facelets
+
+        <ui:define name="modifierComptage"></ui:define>
+
+        <h:form id="form">
+            <h:panelGrid columns="2">
+
+
+                <h:outputText value="Annee fabrication"/>
+                <p:inputText id="anneeFabrication"  value="#{comptageAeController.comptageAe.anneeFabrication}" required="true"></p:inputText>
+
+
+
+                <h:outputText value="Coef lecture"/>
+                <p:inputText id="coefLecture" value="#{comptageAeController.comptageAe.coeffLecture}" required="true"></p:inputText>
+
+                <h:outputText value="Date installation"/>
+                <p:calendar id="dateInstallation" value="#{comptageAeController.comptageAe.dateInstallation}" required="true"/>
+
+                <h:outputText value="Date service"/>
+                <p:calendar id="dateService" value="#{comptageAeController.comptageAe.dateService}" required="true"/>
+
+                <h:outputText value="Date pose"/>
+                <p:calendar id="datePose" value="#{comptageAeController.comptageAe.datePose}" required="true"/>
+
+                <h:outputText value="Etat comptage"/>
+                <h:selectOneRadio id="etatComptage" value="#{comptageAeController.comptageAe.etatComptage}" required="true">
+                    <f:selectItem itemValue="actif" itemLabel="actif"/>
+                    <f:selectItem itemValue="inactif" itemLabel="inactif"/>
+                </h:selectOneRadio>
+
+                <h:outputText value="Numero serie"/>
+                <p:inputText id="numSerie" value="#{comptageAeController.comptageAe.numSerie}" required="true"></p:inputText>
+
+                <h:outputText value="Nombre digits"/>
+                <p:inputText id="nbDigits" value="#{comptageAeController.comptageAe.nbDigits}" required="true"></p:inputText>
+
+                <h:outputText value="Index pose"/>
+                <p:inputText id="indexPose" value="#{comptageAeController.comptageAe.indexPose}" required="true"></p:inputText>
+
+                <h:outputText value="Index depose"/>
+                <p:inputText id="indexDepose" value="#{comptageAeController.comptageAe.indexDepose}" required="true"></p:inputText>
+
+                <h:outputText value="Mode phase"/>
+                <p:inputText id="modePhase" value="#{comptageAeController.comptageAe.modePhase}" required="true"></p:inputText>
+
+                <h:outputText value="Remise a zero"></h:outputText>
+                <h:selectOneRadio id="remiseZero" value="#{comptageAeController.comptageAe.remiseZero}">
+                    <f:selectItem itemValue="vrai" itemLabel="vrai"/>
+                    <f:selectItem itemValue="faux" itemLabel="faux"/>
+                </h:selectOneRadio>
+
+
+                <h:outputText value="Intitulé comptage"/>
+                <p:inputText id="intituleComptage" value="#{comptageAeController.comptageAe.intituleComptage}" required="true"></p:inputText>
+
+
+
+
+            </h:panelGrid>
+
+            <h:panelGrid columns="2">
+                <p:commandButton value="Enregistrer" action="#{comptageAeController.ajouterComptageAe(comptageAe)}"/>
+                <p:commandButton value="Annuler" />
+            </h:panelGrid>
+
+        </h:form>
+
+    </h:body>
+</ui:composition>
+

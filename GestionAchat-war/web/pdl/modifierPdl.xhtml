@@ -1,0 +1,176 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <f:view contentType="text/html">
+        <h:head>
+            <title>Modifier PDL</title>
+        </h:head>
+
+
+
+
+
+        <h:body>
+
+            <ui:composition template="/template/commonLayout.xhtml">
+                <ui:define name="content-title">
+                    <h1 class="titre">Modifier PDL</h1>
+                </ui:define>
+
+                <ui:define name="content">
+
+
+
+
+
+                    <h:form id="ki"  >
+
+
+
+
+                        <div class="form-group row">
+                            <h:outputText  value="Intitule" class="col-sm-2"/>
+                            <h:panelGroup> 
+                                <p:inputText id="intitulee" class="col-sm-8" value="#{modifierPdlController.intitule}" required="true" />
+                            </h:panelGroup>
+                        </div>
+
+                        <div class="form-group row">
+                            <h:outputText  value="puissance" class="col-sm-2" />
+                            <h:panelGroup>  
+                                <p:inputText id="puissancee" class="col-sm-8" value="#{modifierPdlController.puissance}" required="true" />
+                            </h:panelGroup>
+                        </div>
+
+                        <div class="form-group row">
+                            <h:outputText  value="DatePv" class="col-sm-2"  />  
+                            <h:panelGroup  >
+                                <p:calendar id="dateepv" value="#{modifierPdlController.datePv}" required="true" pattern="MM/dd/yyyy"/>
+
+                            </h:panelGroup>
+                        </div>
+
+                        <div class="form-group row">
+                            <h:outputText  value="Reference" class="col-sm-2" />  
+                            <p:inputText id="reference" class="col-sm-8" value="#{modifierPdlController.reference}" required="true" readonly="true" />
+
+                        </div>
+
+                        <div class="form-group row">
+                            <h:outputText  value="Adresse :" class="col-sm-2" />
+                            <h:panelGroup>
+                                <p:inputText id="adresse" class="col-sm-8" value="#{modifierPdlController.adrPdl}" required="true" />
+
+                            </h:panelGroup>
+                        </div>
+
+                        <div class="form-group row">
+                            <h:outputText  value="Type PDL " class="col-sm-2" />
+                            <h:panelGroup>
+                                <p:selectOneMenu id="typePdl" class="col-sm-8"  value="#{modifierPdlController.typeAeid}" required="true"   >
+                                    <f:selectItem itemValue="#{null}" itemLabel="Sélectionner un type PDL"/>
+                                    <f:selectItems value="#{modifierPdlController.listTypeAe}" var="typePdl" itemLabel="#{typePdl.libelle} " itemValue="#{typePdl.id}"/>
+                                    <f:ajax execute="@this" />
+                                </p:selectOneMenu>
+                            </h:panelGroup>
+                        </div>
+
+                        
+
+
+
+                        <p:fieldset legend="Coordonnées géographiques" class="col-lg-10" >
+                            <div class="form-group row">
+                                <h:outputText  value="Latitude" class="col-sm-2"/> 
+                                <h:panelGroup  id="latitudee" class="col-sm-6">
+                                    <p:inputText id="latitude" class="col-sm-8" value="#{modifierPdlController.lattitude}" required="false" label="latitude"  />
+                                </h:panelGroup>
+                            </div>
+                            <div class="form-group row">
+                                <h:outputText  value="Longitude" class="col-sm-2" />  
+                                <h:panelGroup  id="longitudee" class="col-sm-6">
+                                    <p:inputText id="longitude" class="col-sm-8" value="#{modifierPdlController.longitude}"  required="false" label="longitude"  />
+                                </h:panelGroup> 
+                            </div>
+
+                        </p:fieldset>
+
+
+                        <p:fieldset legend="Tension Pdl" class="col-sm-10" > 
+                            <div class="form-group row">
+                                <h:outputText value="Tension depart" class="col-sm-2"></h:outputText>
+
+                                <p:selectOneMenu  id="tensiondepart" class="col-sm-8" value="#{modifierPdlController.tensionDepartid}" required="true" >
+                                    <f:selectItem itemValue="#{null}" itemLabel="Sélectionner "/>
+                                    <f:selectItems value="#{modifierPdlController.listTensionDepart}" var="depart"  itemLabel="#{depart.valeur}" itemValue="#{depart.id}" />  
+                                    <f:ajax execute="@this" />
+                                </p:selectOneMenu>
+                                <p:message for="tensiondepart"/>
+                            </div>
+
+                            <div class="form-group row">
+                                <h:outputText value="Tension arrivee" class="col-sm-2" ></h:outputText>
+
+                                <p:selectOneMenu  id="tensionarrivee" class="col-sm-8" value="#{modifierPdlController.tensionArriveid}" required="true" >
+                                    <f:selectItem itemValue="#{null}" itemLabel="Sélectionner "/>
+                                    <f:selectItems value="#{modifierPdlController.listTensionArrive}" var="arrivee"  itemLabel="#{arrivee.valeur}" itemValue="#{arrivee.id}" />  
+                                    <f:ajax execute="@this" />
+                                </p:selectOneMenu>
+                                <p:message for="tensionarrivee"/>
+                            </div>
+
+                        </p:fieldset>
+
+
+
+                        <p:fieldset legend="Parties prenante" class="col-sm-10">
+
+                            <div class="form-group row">
+                                <h:outputText  value="Receptrice" class="col-sm-2"/>  
+                                <p:selectOneMenu id="receptrice" class="col-sm-8"  value="#{modifierPdlController.partieReceptriceid}" required="true" >
+                                    <f:selectItem itemValue="#{null}" itemLabel="partie receptrice"/>
+                                    <f:selectItems value="#{modifierPdlController.listReceptrice}" var="receptrice" itemLabel="#{receptrice.libelle} " itemValue="#{receptrice.id}"/>
+                                    <f:ajax execute="@this" />
+                                </p:selectOneMenu>
+                                <p:message for="receptrice" />
+                            </div>
+
+                            <div class="form-group row">
+                                <h:outputText  value="Emettricee" class="col-sm-2" /> 
+                                <p:selectOneMenu id="emettrice" class="col-sm-8" value="#{modifierPdlController.partieEmetriceid}" required="true" >
+                                    <f:selectItem itemValue="#{null}" itemLabel="partie emettrice"/>
+                                    <f:selectItems value="#{modifierPdlController.listEmetrice}" var="emettrice" itemLabel="#{emettrice.libelle} " itemValue="#{emettrice.id}"/>
+                                    <f:ajax execute="@this" />
+                                </p:selectOneMenu> 
+                                <p:message for="emettrice" />
+                            </div>
+
+                        </p:fieldset>
+
+
+
+                        
+                        <div class="mx-auto" style="width: 100%;">
+                            <p:commandLink value="Modifier" action="#{modifierPdlController.updatePdl()}" ajax="false" onclick="alert('Modification effectuée')" class="btn btn-warning col-sm-2" style="margin-right:25px;margin-left: 25%;font-weight: bold;">Valider</p:commandLink>
+                            <p:commandLink value="Annuler" process="@this"  action="/pdl/listePdl" class="btn btn-secondary col-sm-2" style="font-weight: bold;"></p:commandLink>
+                            
+                            
+                        </div>
+
+
+
+
+                    </h:form>
+
+
+
+                </ui:define>
+            </ui:composition>
+        </h:body>
+    </f:view>
+</html>
+

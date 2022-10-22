@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <f:view>
+        <h:head>
+
+
+            <meta charset="UTF-8" />
+            <title>Connexion</title>
+            <link rel="stylesheet" href="#{request.contextPath}/css/commonstyle.css"/>
+            <link rel="stylesheet" href="#{request.contextPath}/css/bootstrap.css"/>
+            <META Http-Equiv="Cache-Control" Content="no-cache"></META>
+            <META Http-Equiv="Pragma" Content="no-cache"></META>
+            <META Http-Equiv="Expires" Content="0"></META>
+            <!--<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"/>-->
+            <!--        <script type="text/javascript" src="js/bootstrap.min.js"/>
+                    <script type="text/javascript" src="js/jquery.js" />
+                    <link rel="stylesheet" href="css/ajouter comptage.css" />-->
+
+
+
+        </h:head>
+
+        <style type="text/css">
+            body {
+                background-image: url('C:\Users\Ihab.B\Desktop\body.jpg');
+                margin: 0;
+                padding: 0;
+                font-family: geneva, arial, helvetica, sans-serif;
+                font-size:90%;
+            }
+        </style>
+
+        <h:body>
+
+            <h:form id="form">
+                <div class="jumbotron custom-jumbotron">
+
+                    
+                    <img src="#{request.contextPath}/css/sonelgaz.png" class="col-sm-2"/>
+                    <h1 class="display-4">Connexion</h1>
+                    <p:growl id="growl" life="1000" showDetail="true" sticky="true"/>
+                    <p:inputText id="nomUser" class="form-control" placeholder="Nom utilisateur" label="Nom d'utilisateur" value="#{utilisateurController.nom}" required="true" style="margin-top:2%;" />
+                    <h:message for="nomUser"/>
+
+                    <p:password label="Mot de Passe" class="form-control" style="margin-top:3%" placeholder="Mot de passe" id="passUser" value="#{utilisateurController.mdp}" required="true" />
+                    <h:message for="passUser"/>
+
+
+                    <p:commandLink id="connect" action="#{utilisateurController.valider(nom,mdp)}" value="Connecter" class="btn btn-primary col-sm-3" ajax="false" style="margin-top: 4%;" update="growl" >
+                    </p:commandLink>
+
+
+                </div>
+            </h:form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </h:body>
+    </f:view>
+
+</html>
+

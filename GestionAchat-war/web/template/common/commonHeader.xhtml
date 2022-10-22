@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+    <h:head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="#{request.contextPath}/css/commonstyle.css"/>
+        <link rel="stylesheet" href="#{request.contextPath}/css/bootstrap.css"/>
+        <!--<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"/>-->
+<!--        <script type="text/javascript" src="js/bootstrap.min.js"/>
+        <script type="text/javascript" src="js/jquery.js" />
+        <link rel="stylesheet" href="css/ajouter comptage.css" />-->
+        
+
+    </h:head>
+
+    <h:body>
+        <ui:composition>
+
+            <nav class="navbar navbar-dark bg-dark">
+                <div class="container">
+                    <a class="navbar-brand" href="#"><img src="#{request.contextPath}/css/sonelgaz.png" class="sonelgaz"/>  Sonelgaz</a>
+
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav col-lg-3 col-sm-3">
+
+                            <!--  partie PDL-->
+
+                            <div class="nav-item nav-link navbar-selected-custom">
+                                <div class="nav-titre-padding">
+                                    <a id="toggle-pdl" class="nav-item nav-link navbar-selected-custom" href="#" onclick="togglePdl()">
+                                        <div class="nav-titre-padding">
+                                            PDL <i class="fas fa-plus"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="nav-item nav-link navbar-selected-custom navbar-children pdl">
+                                    <a id="toggle-Comptage" class="nav-item nav-link navbar-selected-custom" href="#">
+                                        <div class="nav-titre-padding">
+                                            Ajouter <i class="fas fa-user"></i>
+                                        </div>
+                                    </a><a id="toggle-Comptage" class="nav-item nav-link navbar-selected-custom" href="#">
+                                        <div class="nav-titre-padding">
+                                            Modifier <i class="fas fa-user"></i>
+                                        </div>
+                                    </a><a id="toggle-Comptage" class="nav-item nav-link navbar-selected-custom" href="#">
+                                        <div class="nav-titre-padding">
+                                            Consulter <i class="fas fa-user"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+
+                            <!-- partie comptage -->
+
+                            <div class="nav-item nav-link navbar-selected-custom">
+                                <div class="nav-titre-padding">
+                                    <a id="toggle-comptage" class="nav-item nav-link navbar-selected-custom" href="#" onclick="toggleComptage()">
+                                        <div class="nav-titre-padding">
+                                            Comptage <i class="fas fa-plus"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="nav-item nav-link navbar-selected-custom navbar-children comptage">
+                                    <a id="toggle-Comptage" class="nav-item nav-link navbar-selected-custom" href="#">
+                                        <div class="nav-titre-padding">
+                                            Ajouter <i class="fas fa-user"></i>
+                                        </div>
+                                    </a><a id="toggle-Comptage" class="nav-item nav-link navbar-selected-custom" href="#">
+                                        <div class="nav-titre-padding">
+                                            Modifier <i class="fas fa-user"></i>
+                                        </div>
+                                    </a><a id="toggle-Comptage" class="nav-item nav-link navbar-selected-custom" href="#">
+                                        <div class="nav-titre-padding">
+                                            Consulter <i class="fas fa-user"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- partie releve -->
+
+                            <div class="nav-item nav-link navbar-selected-custom">
+                                <div class="nav-titre-padding">
+                                    <a id="toggle-releve" class="nav-item nav-link navbar-selected-custom" href="#" onclick="toggleReleve()">
+                                        <div class="nav-titre-padding">
+                                            Releve <i class="fas fa-plus"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="nav-item nav-link navbar-selected-custom navbar-children releve">
+                                    <a id="toggle-Comptage" class="nav-item nav-link navbar-selected-custom" href="#">
+                                        <div class="nav-titre-padding">
+                                            Modifier <i class="fas fa-user"></i>
+                                        </div>
+                                    </a><a id="toggle-Comptage" class="nav-item nav-link navbar-selected-custom" href="#">
+                                        <div class="nav-titre-padding">
+                                            Consulter <i class="fas fa-user"></i>
+                                        </div>
+                                    </a><a id="toggle-Comptage" class="nav-item nav-link navbar-selected-custom" href="#">
+                                        <div class="nav-titre-padding">
+                                            Login <i class="fas fa-user"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- partie login -->
+
+                            <a id="toggle-Comptage" class="nav-item nav-link navbar-selected-custom" href="#">
+                                <div class="nav-titre-padding">
+                                    Login <i class="fas fa-user"></i>
+                                </div>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+        </ui:composition>
+    </h:body>
+</html>

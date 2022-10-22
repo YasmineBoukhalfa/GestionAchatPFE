@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <context-param>
+        <param-name>javax.faces.PROJECT_STAGE</param-name>
+        <param-value>Development</param-value>
+    </context-param>
+    <servlet>
+        <servlet-name>Faces Servlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>/faces/*</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>comptageAeController</servlet-name>
+        <servlet-class>controleur.ComptageAeController</servlet-class>
+    </servlet>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <!--<welcome-file>faces/comptageAe2/ajouterComptage.xhtml</welcome-file>-->
+        <!--<welcome-file>faces/ajouterComptage2.xhtml</welcome-file>-->
+        <!--<welcome-file>faces/comptageAe2/modifierComptage.xhtml</welcome-file>-->
+        <!--<welcome-file>faces/listComptage.xhtml</welcome-file>-->
+        <!--<welcome-file>faces/comptageAe2/consulterComptage.xhtml</welcome-file>-->
+        <!--<welcome-file>faces/comptageAe/listComptage.xhtml</welcome-file>-->
+        
+        <!--<welcome-file>faces/pdl/ajoutPdl.xhtml</welcome-file>-->
+        <!--<welcome-file>faces/pdl/detailPdl.xhtml</welcome-file>-->
+        <!--<welcome-file>faces/pdl/listePdl.xhtml</welcome-file>-->
+        <!--<welcome-file>faces/pdl/modifierPdl.xhtml</welcome-file>-->
+        
+        <!--<welcome-file>faces/releve/ValidationReleve.xhtml</welcome-file>-->
+        <!--<welcome-file>faces/releve/NonValidationReleve.xhtml</welcome-file>-->
+        <!--<welcome-file>faces/releve/Releve.xhtml</welcome-file>-->
+        <!--        <welcome-file>faces/releve/CalculEnergie.xhtml</welcome-file>-->
+        <welcome-file>faces/releve/Login.xhtml</welcome-file>
+        
+        
+    </welcome-file-list>
+</web-app>

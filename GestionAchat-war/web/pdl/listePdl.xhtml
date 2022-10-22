@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <f:view contentType="text/html">
+        <h:head>
+            <title>liste PDL</title>
+        </h:head>
+
+
+        <h:body>
+
+
+
+            <ui:composition template="/template/commonLayout.xhtml">
+                <ui:define name="content-title">
+                    <h1 class="titre">Liste PDL</h1>
+                </ui:define>
+
+                <ui:define name="content">
+
+
+
+
+
+
+                    <p:commandLink action="ajoutPdl" value="Ajouter PDL" class="btn btn-primary col-sm-2" style="margin-bottom:1%;"></p:commandLink>
+
+
+
+
+
+
+                    <h:form id="formid">
+
+
+
+                        <p:dataTable  id="tab" var="pdl" value="#{listePdlAeController.listPdlAe}" paginator="true" paginatorAlwaysVisible="true"  rows="10" >
+
+                            <p:column headerText="Reference" class="col-sm-1">
+                                <h:outputText value="#{pdl.reference}" />
+                            </p:column>
+
+
+                            <p:column headerText="Intitule" class="col-sm-1">
+                                <h:outputText value="#{pdl.intitule}" />
+                            </p:column>
+
+                            <p:column headerText="Type Ae" class="col-sm-1">
+                                <h:outputText value="#{pdl.typeAeid.libelle}" />
+                            </p:column>
+
+                            <p:column headerText="Puissance" class="col-sm-1">
+                                <h:outputText value="#{pdl.puissance}" />
+                            </p:column>
+
+
+
+
+
+
+
+
+
+                            <p:column headerText="Adresse" class="col-sm-1">
+                                <h:outputText value="#{pdl.adrPdl}" />
+                            </p:column>
+
+                            <p:column headerText="DatePV" class="col-sm-1">
+                                <h:outputText value="#{pdl.datePv}" />
+                            </p:column>
+
+
+
+
+                            <p:column headerText="actions" class="col-sm-2">
+                                <p:commandLink title="Consultation" action="/pdl/detailPdl" class="btn btn-primary bouton-liste"   ajax="true">  
+                                    <i class="fas fa-search icon-blanc"></i>
+                                    <f:param name="id" value="#{pdl.id}" />
+                                </p:commandLink>
+
+                                <p:commandLink title="Modification" action="/pdl/modifierPdl" class="btn btn-warning bouton-liste" ajax="false">
+                                    <i class="fas fa-edit "></i>
+                                    <f:param name="id"  value="#{pdl.id}" />
+                                </p:commandLink>
+
+
+                                <p:commandLink title="Suppression"   action="#{listePdlAeController.delete()}" class="btn btn-danger bouton-liste" update="@form" process="@form"  >  
+                                    <i class="fas fa-trash-alt icon-blanc"></i>
+                                    <f:param name="id" value="#{pdl.id}" />
+                                </p:commandLink>
+
+                                
+                            </p:column>
+                        </p:dataTable>
+
+
+                    </h:form>
+
+                </ui:define>
+            </ui:composition>
+
+
+        </h:body>
+    </f:view>
+</html>
+

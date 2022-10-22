@@ -1,0 +1,164 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/template/commonLayout.xhtml">
+
+            <ui:define name="content-title">
+                <h1>yacine</h1>
+            </ui:define>
+
+            <ui:define name="content">
+
+                <h:form id="ComptageAeListForm">
+                    <p:panel header="#{bundle.ListComptageAeTitle}">
+                        <p:dataTable id="datalist" value="#{listComptageAeController.listComptageAe}" var="item"
+                                     selectionMode="single" 
+                                     paginator="true"
+                                     rowKey="#{item.id}"
+                                     rows="10"
+                                     rowsPerPageTemplate="10,20,30,40,50"
+                                     >
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="ID"/>
+                                </f:facet>
+                                <h:outputText value="#{item.id}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Annee fabrication"/>
+                                </f:facet>
+                                <h:outputText value="#{item.anneeFabrication}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Coeff lecture"/>
+                                </f:facet>
+                                <h:outputText value="#{item.coeffLecture}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Date installation"/>
+                                </f:facet>
+                                <h:outputText value="#{item.dateInstallation}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Date service"/>
+                                </f:facet>
+                                <h:outputText value="#{item.dateService}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Date pose"/>
+                                </f:facet>
+                                <h:outputText value="#{item.datePose}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                                </h:outputText>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Etat comptage"/>
+                                </f:facet>
+                                <p:selectBooleanCheckbox value="#{item.etatComptage}" disabled="true"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Numero serie"/>
+                                </f:facet>
+                                <h:outputText value="#{item.numSerie}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Nb digits"/>
+                                </f:facet>
+                                <h:outputText value="#{item.nbDigits}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Index pose"/>
+                                </f:facet>
+                                <h:outputText value="#{item.indexPose}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Index depose"/>
+                                </f:facet>
+                                <h:outputText value="#{item.indexDepose}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Mode phase"/>
+                                </f:facet>
+                                <h:outputText value="#{item.modePhase}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Remise a zero"/>
+                                </f:facet>
+                                <p:selectBooleanCheckbox value="#{item.remiseZero}" disabled="true"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Intitulé comptage"/>
+                                </f:facet>
+                                <h:outputText value="#{item.intituleComptage}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Marque ID"/>
+                                </f:facet>
+                                <h:outputText value="#{item.marqueid}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Nature ID"/>
+                                </f:facet>
+                                <h:outputText value="#{item.natureid}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="PdlAe ID"/>
+                                </f:facet>
+                                <h:outputText value="#{item.pdlAeid}"/>
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="fonctions" />
+                                </f:facet>
+                                <p:commandButton icon="ui-icon-trash" title="supprimer" action="#{listComptageAeController.delete(item)}" update="@form" ajax="true" />
+
+                                <p:commandButton icon="ui-icon-pencil" title="modifier" action="comptageAe2/modifierComptage.xhtml" >
+                                    <f:param name="selectedComptageAeid" value="#{item.id}" />
+                                </p:commandButton>>
+
+                                <p:commandButton icon="ui-icon-search" title="consulter" action="comptageAe2/consulterComptage.xhtml" >
+                                    <f:param name="selectedComptageAeid" value="#{item.id}" />
+                                </p:commandButton>
+                                
+                                
+
+                            </p:column>
+
+                        </p:dataTable>
+                    </p:panel>
+                </h:form>
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</ui:composition>

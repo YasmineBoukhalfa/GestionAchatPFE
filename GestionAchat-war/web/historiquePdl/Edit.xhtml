@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditHistoriquePdlTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditHistoriquePdlLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{historiquePdlController.selected.id}" title="#{bundle.EditHistoriquePdlTitle_id}" required="true" requiredMessage="#{bundle.EditHistoriquePdlRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditHistoriquePdlLabel_puissance}" for="puissance" />
+                    <h:inputText id="puissance" value="#{historiquePdlController.selected.puissance}" title="#{bundle.EditHistoriquePdlTitle_puissance}" required="true" requiredMessage="#{bundle.EditHistoriquePdlRequiredMessage_puissance}"/>
+                    <h:outputLabel value="#{bundle.EditHistoriquePdlLabel_intitule}" for="intitule" />
+                    <h:inputText id="intitule" value="#{historiquePdlController.selected.intitule}" title="#{bundle.EditHistoriquePdlTitle_intitule}" required="true" requiredMessage="#{bundle.EditHistoriquePdlRequiredMessage_intitule}"/>
+                    <h:outputLabel value="#{bundle.EditHistoriquePdlLabel_reference}" for="reference" />
+                    <h:inputText id="reference" value="#{historiquePdlController.selected.reference}" title="#{bundle.EditHistoriquePdlTitle_reference}" required="true" requiredMessage="#{bundle.EditHistoriquePdlRequiredMessage_reference}"/>
+                    <h:outputLabel value="#{bundle.EditHistoriquePdlLabel_datePv}" for="datePv" />
+                    <h:inputText id="datePv" value="#{historiquePdlController.selected.datePv}" title="#{bundle.EditHistoriquePdlTitle_datePv}" required="true" requiredMessage="#{bundle.EditHistoriquePdlRequiredMessage_datePv}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditHistoriquePdlLabel_adrPdl}" for="adrPdl" />
+                    <h:inputText id="adrPdl" value="#{historiquePdlController.selected.adrPdl}" title="#{bundle.EditHistoriquePdlTitle_adrPdl}" required="true" requiredMessage="#{bundle.EditHistoriquePdlRequiredMessage_adrPdl}"/>
+                    <h:outputLabel value="#{bundle.EditHistoriquePdlLabel_nombreTransformation}" for="nombreTransformation" />
+                    <h:inputText id="nombreTransformation" value="#{historiquePdlController.selected.nombreTransformation}" title="#{bundle.EditHistoriquePdlTitle_nombreTransformation}" required="true" requiredMessage="#{bundle.EditHistoriquePdlRequiredMessage_nombreTransformation}"/>
+                    <h:outputLabel value="#{bundle.EditHistoriquePdlLabel_pdlAeid}" for="pdlAeid" />
+                    <h:selectOneMenu id="pdlAeid" value="#{historiquePdlController.selected.pdlAeid}" title="#{bundle.EditHistoriquePdlTitle_pdlAeid}" required="true" requiredMessage="#{bundle.EditHistoriquePdlRequiredMessage_pdlAeid}">
+                        <f:selectItems value="#{pdlAeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditHistoriquePdlLabel_partieReceptriceid}" for="partieReceptriceid" />
+                    <h:inputText id="partieReceptriceid" value="#{historiquePdlController.selected.partieReceptriceid}" title="#{bundle.EditHistoriquePdlTitle_partieReceptriceid}" required="true" requiredMessage="#{bundle.EditHistoriquePdlRequiredMessage_partieReceptriceid}"/>
+                    <h:outputLabel value="#{bundle.EditHistoriquePdlLabel_partieEmmetriceid}" for="partieEmmetriceid" />
+                    <h:inputText id="partieEmmetriceid" value="#{historiquePdlController.selected.partieEmmetriceid}" title="#{bundle.EditHistoriquePdlTitle_partieEmmetriceid}" required="true" requiredMessage="#{bundle.EditHistoriquePdlRequiredMessage_partieEmmetriceid}"/>
+                    <h:outputLabel value="#{bundle.EditHistoriquePdlLabel_tensionDepartid}" for="tensionDepartid" />
+                    <h:inputText id="tensionDepartid" value="#{historiquePdlController.selected.tensionDepartid}" title="#{bundle.EditHistoriquePdlTitle_tensionDepartid}" required="true" requiredMessage="#{bundle.EditHistoriquePdlRequiredMessage_tensionDepartid}"/>
+                    <h:outputLabel value="#{bundle.EditHistoriquePdlLabel_tensionArriveeid}" for="tensionArriveeid" />
+                    <h:inputText id="tensionArriveeid" value="#{historiquePdlController.selected.tensionArriveeid}" title="#{bundle.EditHistoriquePdlTitle_tensionArriveeid}" required="true" requiredMessage="#{bundle.EditHistoriquePdlRequiredMessage_tensionArriveeid}"/>
+                    <h:outputLabel value="#{bundle.EditHistoriquePdlLabel_typeAeid}" for="typeAeid" />
+                    <h:inputText id="typeAeid" value="#{historiquePdlController.selected.typeAeid}" title="#{bundle.EditHistoriquePdlTitle_typeAeid}" required="true" requiredMessage="#{bundle.EditHistoriquePdlRequiredMessage_typeAeid}"/>
+                    <h:outputLabel value="#{bundle.EditHistoriquePdlLabel_adressePdlid}" for="adressePdlid" />
+                    <h:inputText id="adressePdlid" value="#{historiquePdlController.selected.adressePdlid}" title="#{bundle.EditHistoriquePdlTitle_adressePdlid}" required="true" requiredMessage="#{bundle.EditHistoriquePdlRequiredMessage_adressePdlid}"/>
+                    <h:outputLabel value="#{bundle.EditHistoriquePdlLabel_coordonneeGeoid}" for="coordonneeGeoid" />
+                    <h:inputText id="coordonneeGeoid" value="#{historiquePdlController.selected.coordonneeGeoid}" title="#{bundle.EditHistoriquePdlTitle_coordonneeGeoid}" required="true" requiredMessage="#{bundle.EditHistoriquePdlRequiredMessage_coordonneeGeoid}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{historiquePdlController.update}" value="#{bundle.EditHistoriquePdlSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditHistoriquePdlViewLink}"/>
+                <br />
+                <h:commandLink action="#{historiquePdlController.prepareList}" value="#{bundle.EditHistoriquePdlShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditHistoriquePdlIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
